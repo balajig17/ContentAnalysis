@@ -1,46 +1,3 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-body{
-    width:1060px;
-    margin:50px auto;
-}
-path {  stroke: #fff; }
-path:hover {  opacity:0.9; }
-rect:hover {  fill:blue; }
-.axis {  font: 10px sans-serif; }
-.legend tr{    border-bottom:1px solid grey; }
-.legend tr:first-child{    border-top:1px solid grey; }
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {  display: none; }
-.legend{
-    margin-bottom:76px;
-    display:inline-block;
-    border-collapse: collapse;
-    border-spacing: 0px;
-}
-.legend td{
-    padding:4px 5px;
-    vertical-align:bottom;
-}
-.legendFreq, .legendPerc{
-    align:right;
-    width:50px;
-}
-
-</style>
-<body>
-<div id='dashboard'>
-</div>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script>
 function dashboard(id, fData){
     var barColor = 'steelblue';
     function segColor(c){ return {
@@ -200,7 +157,7 @@ function dashboard(id, fData){
         // create the first column for each segment.
         tr.append("td").append("svg").attr("width", '16').attr("height", '16').append("rect")
             .attr("width", '16').attr("height", '16')
-			.attr("fill",function(d){ return segColor(d.type); });
+            .attr("fill",function(d){ return segColor(d.type); });
             
         // create the second column for each segment.
         tr.append("td").text(function(d){ return d.type;});
@@ -244,9 +201,7 @@ function dashboard(id, fData){
         pC = pieChart(tF), // create the pie-chart.
         leg= legend(tF);  // create the legend.
 }
-</script>
 
-<script>
 var freqData= d3.csv("data/dashboard.csv",function(d) {
     return {
         File_Type : d.File_Type,
@@ -270,6 +225,3 @@ var freqData= d3.csv("data/dashboard.csv",function(d) {
 }, function(data) {
     dashboard('#dashboard',data);
 });
-
-
-</script>

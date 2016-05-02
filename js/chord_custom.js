@@ -1,48 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Response Analysis</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-        <script src="js/chord.js"></script>
-        <style>
-        body {
-    background-color: white;
-}
-
-#chart {
-  height: 650px; /* must at least match the svg, to place content after it!*/
-}
-
-.node rect {
-  cursor: move;
-  fill-opacity: .9;
-  shape-rendering: crispEdges;
-}
-
-.node text {
-  pointer-events: none;
-  text-shadow: 0 1px 0 #fff;
-}
-
-.link {
-  fill: none;
-  /*stroke: #000;*/
-  stroke-opacity: .5;
-}
-
-.link:hover {
-  stroke-opacity: .8;
-}
-        </style>
-    </head>
-    <body>
-        <p id="chart">
-            
-        <script>
-
-        var margin = {top: 1, right: 1, bottom: 6, left: 1},
+var margin = {top: 1, right: 1, bottom: 6, left: 1},
             width = 1200 - margin.left - margin.right, // was 960
             //height = 1500 - margin.top - margin.bottom; // was 500
             height = 650; 
@@ -119,8 +75,3 @@
             link.attr("d", path);
           }
         });
-
-        </script>
-        
-    </body>
-</html>
