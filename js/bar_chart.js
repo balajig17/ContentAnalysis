@@ -67,7 +67,7 @@ function load()
         .orient("bottom");
 
 
-         y.domain([0, d3.max(data.data, function(d) { return d.extracted_content; })]);
+         y.domain([0, d3.max(data.data, function(d) { return d.raw_content; })]);
 
         var yAxis = d3.svg.axis()
         .scale(y)
@@ -78,7 +78,7 @@ function load()
       .attr('class', 'd3-tip')
       .offset([-10, 0])
       .html(function(d) {
-            return '  <span class = "tip_h">Raw_size:</span>'+'<span class="tip_v">' + formatBytes(d.raw_content,2) +'</span><br/><span class = "tip_h"> extracted_content: </span>'+'<span class="tip_v">' + formatBytes(d.extracted_content,2) +"</span>"+   '<br/><span class = "tip_h"> extracted_content_percent: </span>'+'<span class="tip_v">' + getPercent(d.extracted_content,d.raw_content) +"</span>"+ '<br/><span class = "tip_h"> extracted_metadata </span>'+'<span class="tip_v">' + formatBytes(d.extracted_metadata,2)+"</span>"+'<br/><span class = "tip_h"> extracted_metadata_percent: </span>'+'<span class="tip_v">' + getPercent(d.extracted_metadata,d.raw_content)  +"</span>"+'<br/><span class = "tip_h"> name: </span>'+'<span class="tip_v">' +parseLongName(d.name)  +"</span>"
+            return '  <span class = "tip_h">Raw_size:</span>'+'<span class="tip_v">' + formatBytes(d.raw_content,2) +'</span><br/><span class = "tip_h"> extracted_content: </span>'+'<span class="tip_v">' + formatBytes(d.extracted_content,2) +"</span>"+   '<br/><span class = "tip_h"> extracted_content_percent: </span>'+'<span class="tip_v">' + getPercent(d.extracted_content,d.raw_content) +"</span>"+ '<br/><span class = "tip_h"> extracted_metadata:</span>'+'<span class="tip_v">' + formatBytes(d.extracted_metadata,2)+"</span>"+'<br/><span class = "tip_h"> extracted_metadata_percent: </span>'+'<span class="tip_v">' + getPercent(d.extracted_metadata,d.raw_content)  +"</span>"+'<br/><span class = "tip_h"> name: </span>'+'<span class="tip_v">' +parseLongName(d.name)  +"</span>"
       })
       
       svg.call(tip);
@@ -93,7 +93,7 @@ function load()
       //                            .domain([0,70])
       //                            .range([height,0]);
       var heightScale = d3.scale.linear()
-                     .domain([0, d3.max(data.data, function(d) { return d.extracted_content; })])
+                     .domain([0, d3.max(data.data, function(d) { return d.raw_content; })])
                      .range([height,0]);
      
       svg.append("g")
@@ -108,14 +108,14 @@ function load()
           .attr("y", 6)
           .attr("dy", ".71em")
           .style("text-anchor", "end")
-          .text("Frequency");
+          .text("Raw Byte Count");
       svg.selectAll(".bar")
           .data(data.data)
         .enter().append("rect")
           .attr("class", "bar")
           .attr("x", function(d,i) { 
           //console.log(d.c);
-          return i; }
+          return 27; }
           )
           .attr("width", 90)
           .attr("y", function(d) { return heightScale(d.extracted_content); })
