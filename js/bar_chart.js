@@ -2,7 +2,6 @@
 
 
 function formatBytes(bytes,decimals) {
-   return bytes;
    if(bytes == 0) return '0 Byte';
    var k = 1000; // or 1024 for binary
    var dm = decimals + 1 || 3;
@@ -78,7 +77,7 @@ function load()
       .attr('class', 'd3-tip')
       .offset([-10, 0])
       .html(function(d) {
-            return '  <span class = "tip_h">Raw_size:</span>'+'<span class="tip_v">' + formatBytes(d.raw_content,2) +'</span><br/><span class = "tip_h"> extracted_content: </span>'+'<span class="tip_v">' + formatBytes(d.extracted_content,2) +"</span>"+   '<br/><span class = "tip_h"> extracted_content_percent: </span>'+'<span class="tip_v">' + getPercent(d.extracted_content,d.raw_content) +"</span>"+ '<br/><span class = "tip_h"> extracted_metadata:</span>'+'<span class="tip_v">' + formatBytes(d.extracted_metadata,2)+"</span>"+'<br/><span class = "tip_h"> extracted_metadata_percent: </span>'+'<span class="tip_v">' + getPercent(d.extracted_metadata,d.raw_content)  +"</span>"+'<br/><span class = "tip_h"> name: </span>'+'<span class="tip_v">' +parseLongName(d.name)  +"</span>"
+            return '  <span class = "tip_h">Raw_size:</span>'+'<span class="tip_v">' + d.raw_content+" B"+'</span><br/><span class = "tip_h"> extracted_content: </span>'+'<span class="tip_v">' + d.extracted_content +" B"+"</span>"+   '<br/><span class = "tip_h"> extracted_content_percent: </span>'+'<span class="tip_v">' + getPercent(d.extracted_content,d.raw_content) +"</span>"+ '<br/><span class = "tip_h"> extracted_metadata:</span>'+'<span class="tip_v">' + d.extracted_metadata+" B"+"</span>"+'<br/><span class = "tip_h"> extracted_metadata_percent: </span>'+'<span class="tip_v">' + getPercent(d.extracted_metadata,d.raw_content)  +"</span>"+'<br/><span class = "tip_h"> name: </span>'+'<span class="tip_v">' +parseLongName(d.name)  +"</span>"
       })
       
       svg.call(tip);
